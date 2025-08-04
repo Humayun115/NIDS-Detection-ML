@@ -1,0 +1,63 @@
+{
+  "doc_type": "pipeline",
+  "pipelines": [{
+    "id": "3e17de94-ca68-4cfa-8462-242a11640900",
+    "nodes": [{
+      "id": "autoai-ts",
+      "op": "wml-http-score",
+      "outputs": [{
+        "id": "autoai-ts"
+      }],
+      "parameters": {
+        "output_logs": true,
+        "del_on_close": true,
+        "optimization": {
+          "customized_pipelines": [],
+          "feature_columns": ["src_bytes", "duration", "dst_bytes", "land", "wrong_fragment", "urgent", "hot", "num_failed_logins", "logged_in", "num_compromised"],
+          "future_exogenous_available": true,
+          "gap_len": 0,
+          "holdout_param": 20,
+          "imputation_threshold": 0.25,
+          "imputer_list": ["FlattenIterative", "Linear", "Cubic", "Previous"],
+          "learning_type": "timeseries",
+          "lookback_window": -1,
+          "max_num_daub_ensembles": 3,
+          "num_backtest": 4,
+          "output_format": "json",
+          "pipeline_type": "all",
+          "prediction_horizon": 1,
+          "target_columns": ["src_bytes"],
+          "use_imputation": true
+        },
+        "compute_pipeline_notebooks_flag": true,
+        "n_parallel_data_connections": 4.0,
+        "one_vs_all_file": true,
+        "output_model": {
+          "location": "auto_ml/636c8177-0b99-4f33-aa0a-f97edf4d542e/wml_data/51bff1e6-3734-49d5-9dc9-6e954b1e727f/data/autoai-ts/after_final_pipelines_generation/P8/model.gzip",
+          "name": "autoai-ts"
+        }
+      },
+      "runtime_ref": "autoai",
+      "type": "execution_node"
+    }],
+    "runtime_ref": "hybrid"
+  }],
+  "primary_pipeline": "3e17de94-ca68-4cfa-8462-242a11640900",
+  "runtimes": [{
+    "app_data": {
+      "wml_data": {
+        "hardware_spec": {
+          "id": "a6c4923b-b8e4-444c-9f43-8a7ec3020110",
+          "name": "L"
+        },
+        "software_spec": {
+          "name": "autoai-ts_rt24.1-py3.11"
+        }
+      }
+    },
+    "id": "autoai",
+    "name": "auto_ai.ts",
+    "version": "2.1.740"
+  }],
+  "version": "2.0"
+}
